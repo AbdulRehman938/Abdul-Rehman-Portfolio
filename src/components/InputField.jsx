@@ -72,8 +72,6 @@ const InputField = ({ field, label, icon: Icon, formData, handleChange }) => {
 
       {/* Input or Textarea */}
       {renderInputContent()}
-
-      {/* Focus/Hover Border Effect */}
       <div
         className={`
           absolute inset-0 border rounded-xl pointer-events-none 
