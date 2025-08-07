@@ -11,14 +11,14 @@ export default function NotFoundPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-emerald-100 flex items-center justify-center px-4">
       <div className="text-center">
         {/* 404 Number */}
         <div className="mb-8">
           <h1 className="text-9xl font-bold text-gray-800 mb-4 animate-bounce">
             404
           </h1>
-          <div className="w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-emerald-500 mx-auto rounded-full"></div>
         </div>
 
         {/* Message */}
@@ -33,7 +33,7 @@ export default function NotFoundPage() {
 
         {/* Illustration */}
         <div className="mb-8">
-          <div className="w-32 h-32 mx-auto bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+          <div className="w-32 h-32 mx-auto bg-emerald-100 rounded-full flex items-center justify-center mb-6">
             <div className="text-6xl">🔍</div>
           </div>
         </div>
@@ -50,7 +50,7 @@ export default function NotFoundPage() {
 
           <button
             onClick={handleGoHome}
-            className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 shadow-md hover:shadow-lg"
+            className="flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-200 shadow-md hover:shadow-lg"
           >
             <Home size={20} />
             Go to Homepage

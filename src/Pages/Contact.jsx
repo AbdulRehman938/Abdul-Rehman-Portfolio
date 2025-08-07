@@ -58,7 +58,7 @@ const ContactPage = () => {
         title: "Success!",
         text: "Your message was sent successfully!",
         icon: "success",
-        confirmButtonColor: "#6366f1",
+        confirmButtonColor: "#41ECFF",
         timer: 2000,
         timerProgressBar: true,
       });
@@ -70,7 +70,7 @@ const ContactPage = () => {
           title: "Success!",
           text: "Your message was sent successfully!",
           icon: "success",
-          confirmButtonColor: "#6366f1",
+          confirmButtonColor: "#41ECFF",
           timer: 2000,
           timerProgressBar: true,
         });
@@ -80,7 +80,7 @@ const ContactPage = () => {
           title: "Failed!",
           text: "Something went wrong. Please try again later.",
           icon: "error",
-          confirmButtonColor: "#6366f1",
+          confirmButtonColor: "#41ECFF",
         });
       }
     } finally {
@@ -94,12 +94,12 @@ const ContactPage = () => {
         <h2
           data-aos="fade-down"
           data-aos-duration="1000"
-          className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]"
+          className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-[#41ECFF] to-[#41ECFF]"
         >
           <span
             style={{
-              color: "#6366f1",
-              backgroundImage: "linear-gradient(45deg, #6366f1 10%, #a855f7 93%)",
+              color: "#41ECFF",
+              backgroundImage: "linear-gradient(45deg, #41ECFF 10%, #41ECFF 93%)",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -122,17 +122,17 @@ const ContactPage = () => {
         id="Contact"
       >
         <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12">
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transition-all duration-500 hover:shadow-[#6366f1]/10">
+          <div className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transition-all duration-500 hover:shadow-[#41ECFF]/10">
             <div className="flex justify-between items-start mb-8">
               <div>
-                <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] to-[#a855f7]">
+                <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#41ECFF] to-[#41ECFF]">
                   Get In Touch
                 </h2>
                 <p className="text-gray-400">
                   Want to discuss something? Drop me a message and let's chat!
                 </p>
               </div>
-              <Share2 className="w-10 h-10 text-[#6366f1] opacity-50" />
+              <Share2 className="w-10 h-10 text-[#41ECFF] opacity-50" />
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -145,7 +145,7 @@ const ContactPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30"
+                  className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#41ECFF]/30"
                   required
                 />
               </div>
@@ -158,7 +158,7 @@ const ContactPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30"
+                  className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#41ECFF]/30"
                   required
                 />
               </div>
@@ -170,7 +170,7 @@ const ContactPage = () => {
                   value={formData.message}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-full resize-none p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#6366f1]/30 h-[9.9rem]"
+                  className="w-full resize-none p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-[#41ECFF]/30 h-[9.9rem]"
                   required
                 />
               </div>
@@ -179,7 +179,7 @@ const ContactPage = () => {
                 data-aos-delay="400"
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-[#41ECFF] to-[#41ECFF] text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
               >
                 <Send className="w-5 h-5" />
                 {isSubmitting ? "Sending..." : "Send Message"}
