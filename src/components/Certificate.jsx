@@ -96,6 +96,7 @@ const Certificate = ({ ImgSertif }) => {
                 fontSize: 40,
                 mb: 1,
                 filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.2))",
+                color: "#10b981",
               }}
             />
             <Typography

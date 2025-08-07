@@ -16,8 +16,8 @@ const socialLinks = [
     subText: "on LinkedIn",
     icon: Linkedin,
     url: "https://www.linkedin.com/in/yash-verma-46b95b238",
-    color: "#0A66C2",
-    gradient: "from-[#0A66C2] to-[#0077B5]",
+    color: "#10b981", // emerald
+    gradient: "from-[#10b981] to-[#3b82f6]", // emerald to blue
     isPrimary: true,
   },
   {
@@ -31,7 +31,7 @@ const socialLinks = [
   },
   {
     name: "YouTube",
-    displayName: "Youtube",
+    displayName: "YouTube",
     subText: "@desiwebdev",
     icon: Youtube,
     url: "https://youtube.com/@desiwebdev?si=GUQpIAeKKyEAmpSd",
@@ -40,7 +40,7 @@ const socialLinks = [
   },
   {
     name: "GitHub",
-    displayName: "Github",
+    displayName: "GitHub",
     subText: "@YashVerma239",
     icon: Github,
     url: "https://github.com/YashVerma239",
@@ -59,17 +59,17 @@ const SocialLinks = () => {
   }, []);
 
   return (
-    <div className="w-full bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-6 py-8 backdrop-blur-xl">
+    <div className="w-full bg-gradient-to-br from-emerald-900/10 to-blue-900/5 rounded-2xl p-6 py-8 backdrop-blur-xl border border-white/10">
       <h3
         className="text-xl font-semibold text-white mb-6 flex items-center gap-2"
         data-aos="fade-down"
       >
-        <span className="inline-block w-8 h-1 bg-indigo-500 rounded-full"></span>
+        <span className="inline-block w-8 h-1 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full"></span>
         Connect With Me
       </h3>
 
       <div className="flex flex-col gap-4">
-        {/* LinkedIn Row */}
+        {/* LinkedIn */}
         <a
           href={linkedIn.url}
           target="_blank"
@@ -81,14 +81,24 @@ const SocialLinks = () => {
           <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${linkedIn.gradient}`} />
           <div className="relative flex items-center gap-4">
             <div className="relative flex items-center justify-center">
-              <div className="absolute inset-0 opacity-20 rounded-md transition-all duration-500 group-hover:scale-110 group-hover:opacity-30" style={{ backgroundColor: linkedIn.color }} />
+              <div
+                className="absolute inset-0 opacity-20 rounded-md transition-all duration-500 group-hover:scale-110 group-hover:opacity-30"
+                style={{ backgroundColor: linkedIn.color }}
+              />
               <div className="relative p-2 rounded-md">
-                <linkedIn.icon className="w-6 h-6 transition-all duration-500 group-hover:scale-105" style={{ color: linkedIn.color }} />
+                <linkedIn.icon
+                  className="w-6 h-6 transition-all duration-500 group-hover:scale-105"
+                  style={{ color: linkedIn.color }}
+                />
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold pt-[0.2rem] text-gray-200 tracking-tight leading-none group-hover:text-white transition-colors duration-300">{linkedIn.displayName}</span>
-              <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">{linkedIn.subText}</span>
+              <span className="text-lg font-bold pt-[0.2rem] text-gray-200 tracking-tight leading-none group-hover:text-white transition-colors duration-300">
+                {linkedIn.displayName}
+              </span>
+              <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                {linkedIn.subText}
+              </span>
             </div>
           </div>
           <ExternalLink className="relative w-5 h-5 text-gray-500 group-hover:text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0 -translate-x-1" />
@@ -97,7 +107,7 @@ const SocialLinks = () => {
           </div>
         </a>
 
-        {/* Instagram & YouTube */}
+        {/* Instagram + YouTube */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[instagram, youtube].map((link, index) => (
             <a
@@ -111,14 +121,24 @@ const SocialLinks = () => {
             >
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${link.gradient}`} />
               <div className="relative flex items-center justify-center">
-                <div className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500 group-hover:scale-125 group-hover:opacity-30" style={{ backgroundColor: link.color }} />
+                <div
+                  className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500 group-hover:scale-125 group-hover:opacity-30"
+                  style={{ backgroundColor: link.color }}
+                />
                 <div className="relative p-2 rounded-lg">
-                  <link.icon className="w-5 h-5 transition-all duration-500 group-hover:scale-110" style={{ color: link.color }} />
+                  <link.icon
+                    className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
+                    style={{ color: link.color }}
+                  />
                 </div>
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">{link.displayName}</span>
-                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">{link.subText}</span>
+                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
+                  {link.displayName}
+                </span>
+                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
+                  {link.subText}
+                </span>
               </div>
               <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0 -translate-x-2" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden">
@@ -128,7 +148,7 @@ const SocialLinks = () => {
           ))}
         </div>
 
-        {/* GitHub Only (TikTok removed) */}
+        {/* GitHub */}
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           {[github].map((link, index) => (
             <a
@@ -142,14 +162,24 @@ const SocialLinks = () => {
             >
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${link.gradient}`} />
               <div className="relative flex items-center justify-center">
-                <div className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500 group-hover:scale-125 group-hover:opacity-30" style={{ backgroundColor: link.color }} />
+                <div
+                  className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500 group-hover:scale-125 group-hover:opacity-30"
+                  style={{ backgroundColor: link.color }}
+                />
                 <div className="relative p-2 rounded-lg">
-                  <link.icon className="w-5 h-5 transition-all duration-500 group-hover:scale-110" style={{ color: link.color }} />
+                  <link.icon
+                    className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
+                    style={{ color: link.color }}
+                  />
                 </div>
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">{link.displayName}</span>
-                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">{link.subText}</span>
+                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
+                  {link.displayName}
+                </span>
+                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
+                  {link.subText}
+                </span>
               </div>
               <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0 -translate-x-2" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden">
