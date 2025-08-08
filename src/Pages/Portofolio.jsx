@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { supabase } from "../supabase";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { useTheme } from "@mui/material/styles";
@@ -73,83 +72,129 @@ function a11yProps(index) {
 }
 
 const techStacks = [
-  { icon: "html.svg", language: "HTML" },
-  { icon: "css.svg", language: "CSS" },
-  { icon: "javascript.svg", language: "JavaScript" },
-  { icon: "tailwind.svg", language: "Tailwind CSS" },
-  { icon: "reactjs.svg", language: "ReactJS" },
-  { icon: "vite.svg", language: "Vite" },
-  { icon: "nodejs.svg", language: "Node JS" },
-  { icon: "bootstrap.svg", language: "Bootstrap" },
-  { icon: "firebase.svg", language: "Firebase" },
-  { icon: "MUI.svg", language: "Material UI" },
-  { icon: "vercel.svg", language: "Vercel" },
-  { icon: "SweetAlert.svg", language: "SweetAlert2" },
+  { icon: "/techstack-img/html.svg", language: "HTML" },
+  { icon: "/techstack-img/css.svg", language: "CSS" },
+  { icon: "/techstack-img/javascript.svg", language: "JavaScript" },
+  { icon: "/techstack-img/tailwind.svg", language: "Tailwind CSS" },
+  { icon: "/techstack-img/reactjs.svg", language: "ReactJS" },
+  { icon: "/techstack-img/vite.svg", language: "Vite" },
+  { icon: "/techstack-img/vercel.svg", language: "Vercel" },
+  { icon: "/techstack-img/express.svg", language: "expressJs" },
+  { icon: "/techstack-img/framer.svg", language: "framerMotion" },
+  { icon: "/techstack-img/git.svg", language: "git" },
+  { icon: "/techstack-img/github.svg", language: "github" },
+  { icon: "/techstack-img/gsap.svg", language: "GSAP" },
+  { icon: "/techstack-img/mysql.svg", language: "mySQL" },
+  { icon: "/techstack-img/three.svg", language: "threeJs" },
+  { icon: "/techstack-img/node.svg", language: "nodeJs" },
+];
+
+const demoProjects = [
+  {
+    id: "1",
+    Title: "Dice Game",
+    Description:
+      "A simple and engaging 2-player dice game where players take turns rolling the dice to compete. Built with clean logic and animated rolls, the project emphasizes interactivity and responsive UI for smooth gameplay.",
+    Features: [
+      "Turn-based multiplayer logic",
+      "Animated dice rolls with transitions",
+      "Dynamic score tracking system",
+      "Clean and responsive user interface",
+    ],
+    TechStack: ["React", "JavaScript", "CSS", "Vite"],
+    Github: "https://github.com/AbdulRehman938/dice_game",
+    Live: "https://dice-game-ashy-one.vercel.app/",
+    Image: "public/projects-img/DiceApp.png",
+  },
+  {
+    id: "2",
+    Title: "Kasmo Landing Page",
+    Description:
+      "A professional, fully responsive landing page designed for a fictional tech brand. Combines elegant design with modern layouts to showcase a product or service effectively.",
+    Features: [
+      "Fully responsive across all screen sizes",
+      "Sleek and minimal design for high conversion",
+      "Reusable components for scalability",
+      "Smooth scroll and animated sections",
+    ],
+    TechStack: ["React", "Tailwind", "GSAP", "Framer Motion"],
+    Github: "https://github.com/AbdulRehman938/Kasmo_Landing_page",
+    Live: "https://kasmo-landing-page.vercel.app/",
+    Image: "public/projects-img/KasmoApp.png",
+  },
+  {
+    id: "3",
+    Title: "API Weather App",
+    Description:
+      "A modern weather forecasting app that fetches real-time data from an API. The app features location search, detailed weather metrics, and a clean UI for quick insights.",
+    Features: [
+      "Real-time API integration",
+      "City-based weather search",
+      "Temperature, humidity, and wind data",
+      "User-friendly responsive design",
+    ],
+    TechStack: ["React", "JavaScript", "CSS", "API"],
+    Github: "https://github.com/AbdulRehman938/API-Weather-APP",
+    Live: "https://api-weather-app-ten.vercel.app/",
+    Image: "public/projects-img/WeatherApp.png",
+  },
+  {
+    id: "4",
+    Title: "Countries Info Page",
+    Description:
+      "Displays detailed information about countries using REST APIs. The project includes search and filtering features with a focus on performance and accessibility.",
+    Features: [
+      "Search and filter countries",
+      "Dark/light mode toggle",
+      "RESTful API integration",
+      "Responsive cards and layout",
+    ],
+    TechStack: ["React", "JavaScript", "Tailwind", "API"],
+    Github: "https://github.com/AbdulRehman938/Countries-info",
+    Live: "https://countries-info-coral.vercel.app/",
+    Image: "public/projects-img/Countries-info.png",
+  },
+  {
+    id: "5",
+    Title: "Speechify App Clone",
+    Description:
+      "A working clone of the Speechify text-to-speech app that allows users to input text and hear it read out loud. Designed for accessibility and enhanced user engagement.",
+    Features: [
+      "Text-to-speech conversion",
+      "Voice and speed selection",
+      "Play/pause playback control",
+      "Smooth and clean UI design",
+    ],
+    TechStack: ["Next.js", "React", "Tailwind", "JavaScript"],
+    Github: "https://github.com/AbdulRehman938/Speechify2",
+    Live: "https://speechify2.vercel.app/",
+    Image: "public/projects-img/SpeechifyApp.png",
+  },
+  // Add more demo projects as needed
 ];
 
 export default function FullWidthTabs() {
   const theme = useTheme();
   const [value, setValue] = useState(0);
   const [projects, setProjects] = useState([]);
-  const [certificates, setCertificates] = useState([]);
   const [showAllProjects, setShowAllProjects] = useState(false);
-  const [showAllCertificates, setShowAllCertificates] = useState(false);
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   const initialItems = isMobile ? 4 : 6;
 
   useEffect(() => {
     AOS.init({ once: false });
+    setProjects(demoProjects);
   }, []);
-
-  const fetchData = useCallback(async () => {
-    try {
-      const [projectsResponse, certificatesResponse] = await Promise.all([
-        supabase.from("projects").select("*").order("id", { ascending: true }),
-        supabase.from("certificates").select("*").order("id", { ascending: true }),
-      ]);
-
-      if (projectsResponse.error) throw projectsResponse.error;
-      if (certificatesResponse.error) throw certificatesResponse.error;
-
-      const projectData = projectsResponse.data || [];
-      const certificateData = certificatesResponse.data || [];
-
-      setProjects(projectData);
-      setCertificates(certificateData);
-
-      localStorage.setItem("projects", JSON.stringify(projectData));
-      localStorage.setItem("certificates", JSON.stringify(certificateData));
-    } catch (error) {
-      console.error("Error fetching data from Supabase:", error.message);
-    }
-  }, []);
-
-  useEffect(() => {
-    const cachedProjects = localStorage.getItem("projects");
-    const cachedCertificates = localStorage.getItem("certificates");
-
-    if (cachedProjects && cachedCertificates) {
-      setProjects(JSON.parse(cachedProjects));
-      setCertificates(JSON.parse(cachedCertificates));
-    }
-
-    fetchData();
-  }, [fetchData]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const toggleShowMore = useCallback((type) => {
-    if (type === "projects") {
-      setShowAllProjects((prev) => !prev);
-    } else {
-      setShowAllCertificates((prev) => !prev);
-    }
+  const toggleShowMore = useCallback(() => {
+    setShowAllProjects((prev) => !prev);
   }, []);
 
   const displayedProjects = showAllProjects ? projects : projects.slice(0, initialItems);
-  const displayedCertificates = showAllCertificates ? certificates : certificates.slice(0, initialItems);
 
   return (
     <div className="md:px-[10%] px-[5%] w-full sm:mt-0 mt-[3rem] bg-[#030014] overflow-hidden" id="Portofolio">
@@ -244,7 +289,43 @@ export default function FullWidthTabs() {
         </AppBar>
 
         <SwipeableViews axis={theme.direction === "rtl" ? "x-reverse" : "x"} index={value} onChangeIndex={setValue}>
-          {/* TabPanel content unchanged, omitted here for brevity */}
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {displayedProjects.length > 0 ? (
+                displayedProjects.map((project) => (
+                  <CardProject key={project.id} project={project} />
+                ))
+              ) : (
+                <p className="text-gray-400">No projects available.</p>
+              )}
+            </div>
+            {projects.length > initialItems && (
+              <div className="flex justify-center mt-6">
+                <ToggleButton
+                  onClick={() => toggleShowMore("projects")}
+                  isShowingMore={showAllProjects}
+                />
+              </div>
+            )}
+          </TabPanel>
+
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Certificate ImgSertif="/Certificate-img/Board.png" />
+              <Certificate ImgSertif="public\Certificate-img\Meta1.png" />
+              <Certificate ImgSertif="public\Certificate-img\Meta2.png" />
+              <Certificate ImgSertif="public\Certificate-img\Meta3.png" />
+            </div>
+          </TabPanel>
+
+
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <div className="flex flex-wrap justify-center gap-6">
+              {techStacks.map((stack, idx) => (
+                <TechStackIcon key={idx} icon={stack.icon} language={stack.language} />
+              ))}
+            </div>
+          </TabPanel>
         </SwipeableViews>
       </Box>
     </div>

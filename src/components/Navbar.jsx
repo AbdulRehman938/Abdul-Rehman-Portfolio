@@ -83,7 +83,7 @@ const Navbar = () => {
               onClick={(e) => scrollToSection(e, "#Home")}
               className="text-xl font-bold bg-gradient-to-r from-[#41ECFF] to-[#1BA5B0] bg-clip-text text-transparent"
             >
-              YashVerma
+              Abdul Rehman
             </a>
           </div>
 

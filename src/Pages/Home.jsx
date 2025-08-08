@@ -6,7 +6,9 @@ import {
   ExternalLink,
   Instagram,
   Sparkles,
+  Facebook, // ✅ Added
 } from "lucide-react";
+import { SiFiverr } from "react-icons/si"; // ✅ Added
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -88,11 +90,13 @@ const SocialLink = memo(({ icon: Icon, link }) => (
 const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
-const WORDS = ["Frontend Developer", "Final Year CSE Student"];
-const TECH_STACK = ["React", "JavaScript", "Node.js", "Tailwind"];
+const WORDS = ["Frontend Developer", "3d animations", "Responsive Designs"];
+const TECH_STACK = ["React", "JavaScript", "Three.js", "Tailwind"];
 const SOCIAL_LINKS = [
-  { icon: Github, link: "https://github.com/YashVerma239" },
-  { icon: Linkedin, link: "https://www.linkedin.com/in/yash-verma-46b95b238" },
+  { icon: Github, link: "https://github.com/AbdulRehman938" },
+  { icon: Linkedin, link: "https://www.linkedin.com/in/abdul-rehman-50a117342/" },
+  { icon: Facebook, link: "https://www.facebook.com/profile.php?id=61578177676599" },
+  { icon: SiFiverr, link: "https://www.fiverr.com/s/R7D13mL" },
 ];
 
 const Home = () => {
@@ -204,12 +208,7 @@ const Home = () => {
                   data-aos="fade-up"
                   data-aos-delay="1000"
                 >
-                  My name is Yash Verma, a frontend developer currently pursuing
-                  my B.Tech in Computer Science and Engineering from Vidya
-                  College of Engineering. I’m in my final year and deeply
-                  passionate about exploring new technologies. I enjoy building
-                  clean, responsive, and user-friendly websites to solve
-                  real-world problems.
+                  I'm Abdul Rehman, a fifth-semester BS Computer Science student at Khwaja Fareed University of Engineering & IT, RYK. I specialize in frontend development with expertise in Tailwind CSS, Three.js, GSAP, Framer Motion, and crafting engaging, responsive UIs.
                 </p>
 
                 {/* Tech Stack */}
@@ -250,7 +249,7 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Column - Optimized Lottie Animation */}
+            {/* Right Column - Lottie */}
             <div
               className="w-full py-[10%] sm:py-0 lg:w-1/2 h-auto lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-8 lg:mt-0"
               onMouseEnter={() => setIsHovering(true)}

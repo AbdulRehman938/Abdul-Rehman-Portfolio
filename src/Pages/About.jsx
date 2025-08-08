@@ -6,15 +6,15 @@ import 'aos/dist/aos.css';
 const Header = memo(() => (
   <div className="text-center lg:mb-8 mb-2 px-[5%]">
     <div className="inline-block relative group">
-      <h2 
-        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#41ECFF] to-[#41ECFF]" 
+      <h2
+        className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#41ECFF] to-[#41ECFF]"
         data-aos="zoom-in-up"
         data-aos-duration="600"
       >
         About Me
       </h2>
     </div>
-    <p 
+    <p
       className="mt-2 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg flex items-center justify-center gap-2"
       data-aos="zoom-in-up"
       data-aos-duration="800"
@@ -40,9 +40,9 @@ const ProfileImage = memo(() => (
           <div className="absolute inset-0 border-4 border-white/20 rounded-full z-20 transition-all duration-700 group-hover:border-white/40 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-10 transition-opacity duration-700 group-hover:opacity-0 hidden sm:block" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#41ECFF]/20 via-transparent to-[#41ECFF]/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" />
-          
+
           <img
-            src="/Photo.jpg"
+            src="public/Real Me.jpg"
             alt="Profile"
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
             loading="lazy"
@@ -57,12 +57,12 @@ const StatCard = memo(({ icon: Icon, color, value, label, description, animation
   <div data-aos={animation} data-aos-duration={1300} className="relative group">
     <div className="relative z-10 bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-white/10 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full flex flex-col justify-between">
       <div className={`absolute -z-10 inset-0 bg-gradient-to-br ${color} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
-      
+
       <div className="flex items-center justify-between mb-4">
         <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 transition-transform group-hover:rotate-6">
           <Icon className="w-8 h-8 text-white" />
         </div>
-        <span 
+        <span
           className="text-4xl font-bold text-white"
           data-aos="fade-up-left"
           data-aos-duration="1500"
@@ -85,9 +85,9 @@ const StatCard = memo(({ icon: Icon, color, value, label, description, animation
 const AboutPage = () => {
   const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
     return {
-      totalProjects: 2,
-      totalCertificates: 6,
-      YearExperience: 0,
+      totalProjects: 22,
+      totalCertificates: 4,
+      YearExperience: 3,
     };
   }, []);
 
@@ -148,16 +148,20 @@ const AboutPage = () => {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#41ECFF] to-[#41ECFF]">
                 Hello, I'm
               </span>
-              <span className="block mt-2 text-gray-200">Yash Verma</span>
+              <span className="block mt-2 text-gray-200">Abdul Rehman</span>
             </h2>
 
             <p className="text-base sm:text-lg lg:text-xl text-gray-400 leading-relaxed text-justify pb-4 sm:pb-0" data-aos="fade-right" data-aos-duration="1500">
-              I am a passionate frontend developer currently pursuing a Bachelor of Technology in Computer Science and Engineering at Vidya College of Engineering. I'm in my final year and love diving into modern technologies, solving real-world problems, and constantly learning new skills to build user-centric web experiences.
+              I'm Abdul Rehman, a fifth-semester BS Computer Science student at Khwaja Fareed University of Engineering & IT, RYK. I'm passionate about frontend development and plan to build my own company focused on website development and design.
+
+              I've built projects like a multiplayer dice game, full login/authentication systems, and a Speechify clone — using tools like React, Vite, Next.js, and MySQL.
+
+              In team settings, I contribute both as a creative designer and a problem solver, with a strong grip on UI animation tools like GSAP, Framer Motion, and Three.js. I'm driven by the goal of crafting smooth, modern, and impactful web experiences.
             </p>
 
             <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-4">
-              <a href="https://github.com/YashVerma239" target="_blank" rel="noreferrer">
-                <button className="sm:px-6 py-2 sm:py-3 rounded-lg bg-gradient-to-r from-[#41ECFF] to-[#41ECFF] text-white font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2 shadow-lg">
+              <a href="https://github.com/AbdulRehman938" target="_blank" rel="noreferrer">
+                <button className="sm:px-6 py-2 sm:py-3 rounded-lg bg-gradient-to-r from-[#41ECFF] to-[#41ECFF] text-black font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2 shadow-lg">
                   <FileText className="w-5 h-5" /> View GitHub
                 </button>
               </a>
