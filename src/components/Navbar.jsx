@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Download, Eye, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCw } from "lucide-react";
+import { Menu, X, Download, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCw } from "lucide-react";
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-// Set up PDF.js worker - Updated for Vite compatibility
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+// Explicitly set PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("Home");
   const [showResume, setShowResume] = useState(false);
-  
+
   // PDF viewer states
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -146,10 +147,10 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed w-full top-0 z-50 transition-all duration-500 ${isOpen
-            ? "bg-[#0a0f1a]"
-            : scrolled
-              ? "bg-[#0a0f1a]/50 backdrop-blur-xl"
-              : "bg-transparent"
+          ? "bg-[#0a0f1a]"
+          : scrolled
+            ? "bg-[#0a0f1a]/50 backdrop-blur-xl"
+            : "bg-transparent"
           }`}
       >
         <div className="mx-auto px-[5%] sm:px-[5%] lg:px-[10%]">
@@ -183,16 +184,16 @@ const Navbar = () => {
                   >
                     <span
                       className={`relative z-10 transition-colors duration-300 ${activeSection === item.href.substring(1)
-                          ? "bg-gradient-to-r from-[#41ECFF] to-[#1BA5B0] bg-clip-text text-transparent font-semibold"
-                          : "text-[#e0f7ff] group-hover:text-white"
+                        ? "bg-gradient-to-r from-[#41ECFF] to-[#1BA5B0] bg-clip-text text-transparent font-semibold"
+                        : "text-[#e0f7ff] group-hover:text-white"
                         }`}
                     >
                       {item.label}
                     </span>
                     <span
                       className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#41ECFF] to-[#1BA5B0] transform origin-left transition-transform duration-300 ${activeSection === item.href.substring(1)
-                          ? "scale-x-100"
-                          : "scale-x-0 group-hover:scale-x-100"
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
                         }`}
                     />
                   </a>
@@ -214,8 +215,8 @@ const Navbar = () => {
 
         <div
           className={`md:hidden transition-all duration-300 ease-in-out ${isOpen
-              ? "max-h-screen opacity-100"
-              : "max-h-0 opacity-0 overflow-hidden"
+            ? "max-h-screen opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden"
             }`}
         >
           <div className="px-4 py-6 space-y-4">
@@ -233,8 +234,8 @@ const Navbar = () => {
                   }
                 }}
                 className={`block px-4 py-3 text-lg font-medium transition-all duration-300 ease ${activeSection === item.href.substring(1)
-                    ? "bg-gradient-to-r from-[#41ECFF] to-[#1BA5B0] bg-clip-text text-transparent font-semibold"
-                    : "text-[#e0f7ff] hover:text-white"
+                  ? "bg-gradient-to-r from-[#41ECFF] to-[#1BA5B0] bg-clip-text text-transparent font-semibold"
+                  : "text-[#e0f7ff] hover:text-white"
                   }`}
                 style={{
                   transitionDelay: `${index * 100}ms`,
@@ -252,176 +253,41 @@ const Navbar = () => {
       {showResume && (
         <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-md">
           <div className="bg-white p-4 rounded-lg shadow-lg w-[90%] h-[90%] flex flex-col">
-            {/* Header with controls */}
-            <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
-              {/* PDF Controls */}
-              <div className="flex items-center gap-2 flex-wrap">
-                {/* Page Navigation */}
-                <div className="flex items-center gap-1 bg-gray-100 rounded px-2 py-1">
-                  <button
-                    onClick={goToPrevPage}
-                    disabled={pageNumber <= 1}
-                    className="p-1 rounded hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <ChevronLeft size={16} />
-                  </button>
-                  <span className="text-sm font-medium min-w-[60px] text-center">
-                    {numPages ? `${pageNumber} / ${numPages}` : '--'}
-                  </span>
-                  <button
-                    onClick={goToNextPage}
-                    disabled={pageNumber >= numPages}
-                    className="p-1 rounded hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <ChevronRight size={16} />
-                  </button>
-                </div>
 
-                {/* Zoom Controls */}
-                <div className="flex items-center gap-1 bg-gray-100 rounded px-2 py-1">
-                  <button
-                    onClick={zoomOut}
-                    disabled={scale <= 0.5}
-                    className="p-1 rounded hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <ZoomOut size={16} />
-                  </button>
-                  <span className="text-sm font-medium min-w-[50px] text-center">
-                    {Math.round(scale * 100)}%
-                  </span>
-                  <button
-                    onClick={zoomIn}
-                    disabled={scale >= 3.0}
-                    className="p-1 rounded hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <ZoomIn size={16} />
-                  </button>
-                </div>
+            {/* Header controls can go here if you want */}
 
-                {/* Rotation */}
-                <button
-                  onClick={rotate}
-                  className="p-2 bg-gray-100 rounded hover:bg-gray-200 transition-colors"
-                >
-                  <RotateCw size={16} />
-                </button>
-
-                {/* Reset View */}
-                <button
-                  onClick={resetView}
-                  className="px-3 py-1 text-sm bg-gray-100 rounded hover:bg-gray-200 transition-colors"
-                >
-                  Reset
-                </button>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handleDownload}
-                  className="px-4 py-2 bg-gradient-to-r from-[#41ECFF] to-[#1BA5B0] text-white rounded shadow hover:opacity-90 flex items-center transition-opacity"
-                >
-                  <Download className="mr-2" size={16} /> Download
-                </button>
-                <button
-                  onClick={() => setShowResume(false)}
-                  className="px-4 py-2 bg-gray-600 text-white rounded shadow hover:bg-gray-500 flex items-center transition-colors"
-                >
-                  <X className="mr-2" size={16} /> Close
-                </button>
-              </div>
-            </div>
-
-            {/* PDF Viewer */}
             <div className="flex-1 overflow-auto rounded border bg-gray-50 flex items-center justify-center">
-              {loading && (
-                <div className="flex items-center justify-center h-full">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#41ECFF]"></div>
-                  <span className="ml-2 text-gray-600">Loading PDF...</span>
-                </div>
-              )}
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Document
+                  file="/AbdulRehman-SoftwareEngineer.pdf"
+                  onLoadSuccess={onDocumentLoadSuccess}
+                  onLoadError={onDocumentLoadError}
+                >
+                  <Page pageNumber={pageNumber} scale={scale} rotate={rotation} />
+                </Document>
 
-              {error && (
-                <div className="flex flex-col items-center justify-center h-full text-red-600">
-                  <p className="text-lg font-medium mb-2">Error Loading PDF</p>
-                  <p className="text-sm mb-4 text-center max-w-md">{error}</p>
-                  <div className="text-xs text-gray-500 mb-4 max-w-md text-center">
-                    <p>Debug info:</p>
-                    <p>PDF.js version: {pdfjs.version}</p>
-                    <p>File path: /AbdulRehman-SoftwareEngineer.pdf</p>
-                    <p>Check browser console for detailed errors</p>
+                {loading && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/70">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#41ECFF]"></div>
+                    <span className="mt-2 text-gray-600">Loading PDF...</span>
                   </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => {
-                        setError(null);
-                        setLoading(true);
-                      }}
-                      className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
-                    >
-                      Retry
-                    </button>
-                    <button
-                      onClick={() => {
-                        window.open('/AbdulRehman-SoftwareEngineer.pdf', '_blank');
-                      }}
-                      className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-                    >
-                      Open PDF Directly
-                    </button>
-                  </div>
-                </div>
-              )}
+                )}
 
-              {!loading && !error && (
-                <div className="p-4">
-                  <Document
-                    file={{
-                      url: "/AbdulRehman-SoftwareEngineer.pdf",
-                      httpHeaders: {
-                        'Cache-Control': 'no-cache'
-                      }
-                    }}
-                    onLoadSuccess={onDocumentLoadSuccess}
-                    onLoadError={onDocumentLoadError}
-                    options={{
-                      cMapUrl: `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/cmaps/`,
-                      cMapPacked: true,
-                      standardFontDataUrl: `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/standard_fonts/`,
-                      verbosity: 1
-                    }}
-                    loading={
-                      <div className="flex items-center justify-center">
-                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#41ECFF]"></div>
-                        <span className="ml-2 text-gray-600">Loading PDF...</span>
-                      </div>
-                    }
-                  >
-                    <Page
-                      pageNumber={pageNumber}
-                      scale={scale}
-                      rotate={rotation}
-                      loading={
-                        <div className="flex items-center justify-center h-96">
-                          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#41ECFF]"></div>
-                        </div>
-                      }
-                      className="shadow-lg"
-                    />
-                  </Document>
-                </div>
-              )}
+                {error && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-red-600 bg-white/70">
+                    <p>Error Loading PDF: {error}</p>
+                    {/* Retry / Open directly buttons can go here */}
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Footer with page info */}
-            {numPages && (
-              <div className="mt-2 text-center text-sm text-gray-600">
-                Page {pageNumber} of {numPages} • Scale: {Math.round(scale * 100)}% • Rotation: {rotation}°
-              </div>
-            )}
+            {/* Footer with page info and controls can go here */}
+
           </div>
         </div>
       )}
+
     </>
   );
 };
