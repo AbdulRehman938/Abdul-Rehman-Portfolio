@@ -104,7 +104,7 @@ const demoProjects = [
     TechStack: ["React", "JavaScript", "CSS", "Vite"],
     Github: "https://github.com/AbdulRehman938/dice_game",
     Live: "https://dice-game-ashy-one.vercel.app/",
-    Image: "public/projects-img/DiceApp.png",
+    Image: "/projects-img/DiceApp.png",
   },
   {
     id: "2",
@@ -120,7 +120,7 @@ const demoProjects = [
     TechStack: ["React", "Tailwind", "GSAP", "Framer Motion"],
     Github: "https://github.com/AbdulRehman938/Kasmo_Landing_page",
     Live: "https://kasmo-landing-page.vercel.app/",
-    Image: "public/projects-img/KasmoApp.png",
+    Image: "/projects-img/KasmoApp.png",
   },
   {
     id: "3",
@@ -136,7 +136,7 @@ const demoProjects = [
     TechStack: ["React", "JavaScript", "CSS", "API"],
     Github: "https://github.com/AbdulRehman938/API-Weather-APP",
     Live: "https://api-weather-app-ten.vercel.app/",
-    Image: "public/projects-img/WeatherApp.png",
+    Image: "/projects-img/WeatherApp.png",
   },
   {
     id: "4",
@@ -152,7 +152,7 @@ const demoProjects = [
     TechStack: ["React", "JavaScript", "Tailwind", "API"],
     Github: "https://github.com/AbdulRehman938/Countries-info",
     Live: "https://countries-info-coral.vercel.app/",
-    Image: "public/projects-img/Countries-info.png",
+    Image: "/projects-img/Countries-info.png",
   },
   {
     id: "5",
@@ -168,7 +168,7 @@ const demoProjects = [
     TechStack: ["Next.js", "React", "Tailwind", "JavaScript"],
     Github: "https://github.com/AbdulRehman938/Speechify2",
     Live: "https://speechify2.vercel.app/",
-    Image: "public/projects-img/SpeechifyApp.png",
+    Image: "/projects-img/SpeechifyApp.png",
   },
   // Add more demo projects as needed
 ];
