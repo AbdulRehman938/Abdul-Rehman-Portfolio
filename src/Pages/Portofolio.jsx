@@ -312,9 +312,9 @@ export default function FullWidthTabs() {
           <TabPanel value={value} index={1} dir={theme.direction}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <Certificate ImgSertif="/Certificate-img/Board.png" />
-              <Certificate ImgSertif="public\Certificate-img\Meta1.png" />
-              <Certificate ImgSertif="public\Certificate-img\Meta2.png" />
-              <Certificate ImgSertif="public\Certificate-img\Meta3.png" />
+              <Certificate ImgSertif="\Certificate-img\Meta1.png" />
+              <Certificate ImgSertif="\Certificate-img\Meta2.png" />
+              <Certificate ImgSertif="\Certificate-img\Meta3.png" />
             </div>
           </TabPanel>
 
